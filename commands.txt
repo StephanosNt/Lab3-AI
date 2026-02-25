@@ -1,3 +1,8 @@
+
+!unzip lab3.zip
+
+%cd /content/lab3/project/
+
 !mkdir -p ./.env/.saved/ 
 !mkdir -p ./.env/plot/
 
