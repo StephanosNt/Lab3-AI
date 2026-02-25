@@ -13,7 +13,6 @@ from dataset.download.b_tumor4600 import Btumor4600
 from dataset.download.l_pneumonia5200 import Lpneumonia5200
 from federated.federated import Federated
 from model.model import Model
-
 from model.math.plot import ModelPlot
 
 #
@@ -140,7 +139,7 @@ class FederatedSimulation():
         debug = True,
             
         # _________FILE____________
-        save = False,                         # IF save global model after sim. 
+        save = True,                         # IF save global model after sim.  From Stefanos Remove it if not needed
         load_round = 0,                       # Which specific global model from directory (directory id).
         load_reg = True,                      # Regression from global model after loading pretrained or not.
         load = False,                         # IF load from directory.
@@ -148,8 +147,8 @@ class FederatedSimulation():
         path = "./.env/.saved/",              # Path to saved global model.
             
         # _______SIMULATION________
-        rounds = 25,                          # Number of rounds for sim in federated. 
-        ood_round = 26,                       # Round where ood starts.  
+        rounds = 40,                          # Number of rounds for sim in federated. From Stefanos Remove it if not needed
+        ood_round = 41,                       # Round where ood starts.  From Stefanos Remove it if not needed
         clients = 5,                          # Number of clients in sim. (global model + local models).
         participants = 4,                     # How many participants for current round (randomized between clients). (local models only)
         host_id=0,                            # Host id (index). Should probably always be 0 (global model).
@@ -167,7 +166,7 @@ class FederatedSimulation():
         id_client = [1,2,3,4],                      # Clients id in-distribution, excluding global client/model.
         ood_client = [5,6],                           # Datasets out-of-distribution (index in dataset), excluding global client/model.
         
-        ood_protection = True,                     # IF ood protection (exluding) is enabled.
+        ood_protection = False,                     # IF ood protection (exluding) is enabled.  Pre-training disables OOD detection. From Stefanos Remove it if not needed
         ood_protection_thres = 0.7                  # Threshold for consider models being ood. 
     )
     
@@ -192,7 +191,7 @@ class FederatedSimulation():
         number_of_classes = 2               # Number of total classes.
     )
     plot_config = ConfigPlot(
-        plot = False,
+        plot = True,                        #From Stefanos Remove it if not needed
             
         # __________FILE___________
         path = './.env/plot',                
@@ -216,14 +215,16 @@ class FederatedSimulation():
                 (Btumor3000().ID, Btumor3000(), []),    # id 1 ID DATA 
                 (Balzheimer5100().ID, Balzheimer5100(), []), # id 2 ID DATA 
                 (Lpneumonia5200().ID, Lpneumonia5200(), []), # id 3 ID DATA 
-                (Lpneumonia5200().ID, Lpneumonia5200(), [[300,500],[3600,3800]]), # id 4 ID DATA (subsamples of total, not used in pre-training) 
-                (Btumor4600().ID, Btumor4600(), [[300,500],[3700,3900]]), # id 5 ID DATA (subsamples of total, not used in pre-training) 
-                (Balzheimer5100_poisoned().ID, Balzheimer5100_poisoned(), [[1000,1700],[4000,4700]]), # id 6 OOD DATA (poisoned data) (not used in pre-training)
-                (Afaces16000().ID, Afaces16000(), [[1,700],[2501,3200]]) # id 7 OOD DATA (not used in pre-training) # Take some two subsets of complete dataset. # [250,750], [4000,4500]
+                #From Stefanos Remove it if not needed
+                #(Lpneumonia5200().ID, Lpneumonia5200(), [[300,500],[3600,3800]]), # id 4 ID DATA (subsamples of total, not used in pre-training) 
+                #(Btumor4600().ID, Btumor4600(), [[300,500],[3700,3900]]), # id 5 ID DATA (subsamples of total, not used in pre-training) 
+                #(Balzheimer5100_poisoned().ID, Balzheimer5100_poisoned(), [[1000,1700],[4000,4700]]), # id 6 OOD DATA (poisoned data) (not used in pre-training)
+                #(Afaces16000().ID, Afaces16000(), [[1,700],[2501,3200]]) # id 7 OOD DATA (not used in pre-training) # Take some two subsets of complete dataset. # [250,750], [4000,4500]
             ],
             dataset_config=self.dataset_config,
             plot_config=self.plot_config
         )
+        #From Stefanos Remove it if not needed
         
         federated = Federated(
             dataset=dataset, 
@@ -238,7 +239,9 @@ class FederatedSimulation():
     
 if __name__ == "__main__": 
     # Model. 
-    
+    #From Stefanos Remove it if not needed
     #-------------------------
-    sim1 = ModelSimulation()
-    sim1.run()
+    #sim1 = ModelSimulation()
+    #sim1.run()
+    sim_federated = FederatedSimulation()
+    sim_federated.run()
