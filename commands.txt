@@ -1,0 +1,6 @@
+!mkdir -p ./.env/.saved/ 
+!mkdir -p ./.env/plot/
+
+
+
+!python main.py
