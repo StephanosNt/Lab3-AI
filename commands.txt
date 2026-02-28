@@ -11,5 +11,6 @@ Then upload the lab3.zip
 !mkdir -p ./.env/plot/
 
 !python main.py
+!results_processor.py
 
 !zip -r saved_results.zip ./.env/.saved/ ./.env/plot/
