@@ -3,7 +3,7 @@ Runtime  -> Change runtime type -> T4 GPU -> Save
 
 Then upload the lab3.zip
 
-!unzip lab3.zip
+!unzip project.zip
 
 %cd /content/lab3/project/
 
@@ -11,6 +11,6 @@ Then upload the lab3.zip
 !mkdir -p ./.env/plot/
 
 !python main.py
-!results_processor.py
+!python results_processor.py
 
 !zip -r saved_results.zip ./.env/.saved/ ./.env/plot/
