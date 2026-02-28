@@ -5,7 +5,7 @@ Then upload the lab3.zip
 
 !unzip project.zip
 
-%cd /content/lab3/project/
+%cd /content/project/
 
 !mkdir -p ./.env/.saved/ 
 !mkdir -p ./.env/plot/
